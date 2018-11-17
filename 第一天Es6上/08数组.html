@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // filter    过滤
+        var words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
+
+        //看原生代码时需要看什么：
+        /*
+            1、返回值
+            2、参数
+            3、他的判断逻辑
+        */
+        const result = words.filter(function(val,index,arr){
+            // console.log(a+","+b+","+c+","+d+","+e+","+f);
+            // 查看参数的作用
+            console.log(arguments);
+            return val.length>6;
+        });
+        console.log(result);
+    </script>
+</body>
+</html>

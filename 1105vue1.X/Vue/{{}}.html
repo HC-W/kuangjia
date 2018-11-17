@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- {{}} 输出data里面的数据 -->
+        {{name}}
+        <div>
+            <h1>
+                <span>
+                    <b>{{name}}</b>
+                </span>
+            </h1>
+        </div>
+    </div>
+    <!-- <div class="app">
+        {{name}}
+    </div>
+    <div class="app">
+        {{name}}
+    </div>
+    <div class="app">
+        {{name}}
+    </div> -->
+    <!-- {{name}} -->
+    <script>
+        window.onload=()=>{
+            // 限制当前框架的使用范围：只在el对应的元素中生效
+            // 因为id 只有唯一一个，所以经常使用id，不管深层还是只有一层，只要有这个包含的都生效
+            // 如果使用的是class或者body标签，则默认只有第一个生效，在标签外部不生效
+            let app=new Vue({
+                el:"#app",   //id
+                // el:".app",
+                // el:"div",
+                // data 里面有一个name，name的值对应wang
+                // MVVM (??) data里面放的是数据
+                data:{
+                    name:"wang"
+                }
+            })
+        }    
+    </script>
+</body>
+</html>

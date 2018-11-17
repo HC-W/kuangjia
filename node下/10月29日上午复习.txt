@@ -1,0 +1,19 @@
+web 服务器
+1、返回文件       √
+2、数据交互  完成一半    ×
+3、数据库
+
+get 数据
+url 里面  url.com? (参数区域)
+大小32k
+
+POST 数据
+体 ===> body里面
+大小1G
+需要去监听 request.on('data')
+    结束   request.on("end")
+
+发送东西的方法
+setHeader() ===>  cookie  ×
+writeHead()状态码
+write() 返回内容

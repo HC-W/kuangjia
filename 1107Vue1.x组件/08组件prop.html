@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./vue.js"></script>
+    <title>prop</title>
+</head>
+<body>
+    <div id="app">
+        <mt-div :item="arr" :num="num" :item-json="json" :str="1234354" :wang="arr_wang"></mt-div>
+    </div>
+    <script>
+        Vue.component("MtDiv",{
+            // 严格区分类型
+            props:{
+                item:Array,
+                itemJson:Object,
+                num:Number,
+                str:[String,Number],  //propB: [String, Number],
+                wang:{
+                    type:[Array,Object],
+                    required:true,
+                    default:[]
+                }
+            },
+            template:`<div>
+                {{item}}
+                <hr>
+                {{itemJson}}
+                <hr>
+                {{num}}
+                <hr>
+            </div>
+            `
+        })
+    
+        let app=new Vue({
+            el:"#app",
+            data:{
+                num:10,
+                arr:[1,2,3,4,5],
+                json:{
+                    name:"wang",
+                    age:18
+                },
+                arr_wang:[
+                    1,2,3,4,5
+                ]
+            }
+        })
+    
+    </script>
+</body>
+</html>

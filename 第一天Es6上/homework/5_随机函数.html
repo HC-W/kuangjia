@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>创建随机函数</title>
+    <style>
+        #app div{
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            display: inline-block;
+            background-color: orangered;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+
+    </div>
+        <!-- 
+            随机数函数, 1 ~ 100
+            创建 100 div
+            filter 过滤 div 内值 小于 50的div
+            事件委托 给每个 剩余 div 加一个 onmouseover
+            和 onmouseout的效果 ;
+         -->
+
+         <script>
+            //  数值的随机函数
+             function rand(min,max){
+                 return Math.floor(Math.random()*(max+1-min)+min);
+             }
+             let i=0;
+             let A=document.getElementById("app");
+             let str="";
+             while(i<=99){
+                i++;
+                str +=`<div>${rand(1,100)}</div>`;
+             }
+             A.innerHTML = str;
+             let Darr=Array.from(A.getElementsByTagName("div"));
+             let Narr=Darr.filter((val)=>{
+                //  三目运算符，自定义属性
+                 val.title=Number(val.innerHTML)>50?1:0;
+                return Number(val.innerHTML)>50;
+             });
+            //  console.log(Narr);
+
+            //  事件委托
+            A.onmouseover=function(){
+                // console.log(event.target.title);
+                if(!Number(event.target.title)){
+                    return
+                }
+                event.target.style.backgroundColor="green";
+                
+                
+            }
+         </script>
+</body>
+</html>

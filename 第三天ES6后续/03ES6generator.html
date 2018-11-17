@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>generator</title>
+</head>
+<body>
+    <script>
+        // generator  生成器函数 
+        function show(){
+            alert(1);
+        }
+        function *show2(){
+            console.log(2);
+            let b=yield 23;
+            console.log(3);
+            console.log(b);
+            // return 30;
+            yield 20;
+            console.log(5);
+            return 30;
+            
+        }
+
+        // 生成器函数===>返回一个 generator 对象
+        // 通过 yield 可以让代码停住
+        //   next()  接着走
+        /*
+            优点：
+                在异步中，若后面的代码需要用到前面请求的结果，则可以使用让其等待
+            好处：
+                1、参数
+                2、返回
+                    done:true ===>代表当前代码走完了
+                    value:undefined / yield 和 return 的返回值
+        */
+
+        let s= show2();
+        // console.log(s);
+        let a = s.next();
+        // let b = s.next(a.value);
+        // let c = s.next();
+        console.log(a);
+        // console.log(b);
+        // console.log(c);
+    </script>
+</body>
+</html>

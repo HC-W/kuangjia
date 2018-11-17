@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="styleJson.color">
+        <span v-bind:style="styleJson">
+            我是一个标签 ==>span
+        </span>
+        <span :class="ClassArr">
+            是我哟！
+        </span>
+        <!-- 绑定点击事件 -->
+        <button v-on:click="fn">玩一玩</button>
+    </div>
+    <script>
+        window.onload=()=>{
+            let app=new Vue({
+                el:"#app",
+                // 放数据
+                data:{
+                    styleJson:{
+                        color:"",
+                        display:"block",
+                        width:"300px",
+                        // key值不能写中划线 -
+                        "font-size":"20px"
+                    },
+                    ClassArr:["a","b","c"],
+                    // 如果数据这边有事件，则触发的是这个函数，因为数据里面的优先级高，但这样是不对的，会报错
+                    // fn(){
+                    //     alert("你猜我是谁？")
+                    // }
+                },
+                // 放事件
+                methods:{
+                    fn(){
+                        // alert("你猜我是谁？")
+                        // console.log(this);
+                        this.styleJson.color="red";
+                        this.ClassArr.pop()
+                    }
+                }
+            })
+        }
+    </script>
+</body>
+</html>

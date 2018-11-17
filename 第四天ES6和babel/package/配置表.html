@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>配置表</title>
+</head>
+<body>
+    <!-- 
+        通过一个配置文件去看  node_modules都安装了什么
+        npm init ===> 初始化  ===> package.json 文件
+        配置命令：
+            package name: (package) wang
+            version: (1.0.0) 1.1.1    ===>  版本
+            description: 这是一个学习简单配置babel的过程
+            entry point: (index.js)      ===>  入口
+            test command:      ===> 脚本测试
+            git repository:    ===> github
+            keywords: babel    ===> 关键字
+            author: 诺
+            license: (ISC) MIT
+
+        开发依赖===> 1、开发的时候用，生产的时候不要了
+            "devDependencies": {
+                "jquery": "^3.3.1"
+            }
+            
+            babel-cli ===>6.26
+            babel-preset-env ===> 1.7.0
+            .babelrc ===> babel转码前访问的文件
+                perset 预设
+
+            package.json ===> scripts 配置运行脚本
+                build:babel js -d build
+                    .bin 转码的文件夹 目标地点  转码完毕的文件夹
+        
+        npm install --save-dev jquery
+
+
+        cnpm i -D (插件名) @ （版本号）
+        cnpm install --save-dev (插件名)
+
+        第二种：
+            在package.json 里面 直接修改版本号
+            在doc窗口直接运行 cnpm i (会自动下载)
+        npm view jquery versions  ===> 查看npm 模块中已有的全部版本
+
+
+        步骤整理：
+            1、在 node.js 安装过的基础上，npm install -g cnpm --registry=https://registry.npm.taobao.org  ===> 安装淘宝的cnpm
+            2、使用 cd 逐步进入到文件所在文件夹（或者 硬盘名:  直接拖拽文件夹进入）
+            3、npm init    ===> 初始化   
+            4、填写开发者信息   ===> 生成package.json文件
+            5、npm install --save-dev jquery    ===> 安装jquery(根据需要)===>生成package-lock.json文件
+            6、cnpm install --save-dev babel-cli   ===> 安装babel-cli,版本6.26，对应 package.json文件中的babel-cli
+            7、cnpm install babel-preset-env --save-dev   ===> 安装babel-preset-env,版本1.7.0，对应 package.json文件中的babel-preset-env
+                perset 预设
+            8、在根文件夹 package中建立 .babelrc（babel转码前访问的文件） 文件，在其中写入：
+                {
+                    "presets": ["env"]
+                }
+                没有这个文件是不能进行编码转义的
+            9、在 package.json 文件的scripts（配置运行脚本） 中添加 build:babel js -d build
+            9、在根文件夹 package 下建立js和build两个文件夹，然后在js文件夹下建立文件 1.js ，在里面写入ES6代码
+            10、在doc窗口（确定路径正确，最后一级为 package）,运行命令： npm run build
+     -->
+     <script src="package/node-modules/jquery/dist/jquery.js"></script>
+</body>
+</html>

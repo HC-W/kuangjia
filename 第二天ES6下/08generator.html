@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>generator</title>
+</head>
+<body>
+    <!-- generator  生成器
+            能暂停
+
+            普通函数    飞机    特殊情况才停止，不然直到航班结束才停止===>return
+
+            生成器函数   出租车   能停 // 停完还能走
+     -->
+     <script>
+         function show(){
+             alert(1);
+         }
+         show();
+         function *show2(){
+             alert(2);
+             yield
+             alert(3);
+         }
+         let gen=show2();
+         gen.next();
+     </script>
+</body>
+</html>

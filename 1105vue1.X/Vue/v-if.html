@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-if</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 创建和删除的操作 -->
+        <!-- if 和 else之间不能添加其他的标签，两者不能分开 -->
+        <span v-if="bol">你看我出不出来!</span> 
+        <span v-else>最后才是我</span>
+        <button @click="isShow">点击隐藏</button> 
+    </div>
+    <script>
+        window.onload=()=>{
+            let app=new Vue({
+                el:"#app",
+                data:{
+                    bol:true
+                },
+                methods:{
+                    isShow(){
+                        this.bol=!this.bol;
+                    }
+                }
+            })
+        }
+    </script>
+</body>
+</html>

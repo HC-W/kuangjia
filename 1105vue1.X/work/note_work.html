@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./03animate.css">
+    <title>work1</title>
+    <script src="./vue.js"></script>
+    <style>
+        #wrap{
+            width: 350px;
+            height: 600px;
+            margin: 0 auto;
+            background-color: #E2E5EA;
+        }
+        
+        #top{
+            font-size: 25px;
+            font-weight: 800;
+            color: white;
+            background-color: skyblue;
+            padding: 15px;
+            text-align: center;
+        }
+        #app{
+            width: 90%;
+            margin: 10px auto;
+        }
+        .txt{
+            overflow: hidden;
+        }
+        input[type="text"]{
+            width: 70%;
+            height: 40px;
+            border-radius: 2px;
+            float: left;
+        }
+        .btn{
+            width: 20%;
+            height: 45px;
+            float:right;
+            background-color: skyblue;
+        }
+        .add{
+            margin-top:10px; 
+            font-size: 13px;
+            overflow: hidden;
+        }
+        input[type='checkbox']{
+            margin-right: 10px;
+        }
+        .canel{
+            display:inline-block;
+            color: white;
+            font-weight: 600;
+            padding: 5px 10px;
+            background-color: skyblue;
+            border-radius: 4px;
+            float:right;
+        }
+        .no{
+            width: 100%;
+            background-color: skyblue;
+            color: white;
+            font-size: 15px;
+            font-weight: 600;
+            padding: 10px 15px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="top">
+            Note Book
+        </div>
+        <div id="app">
+            <div class="txt">
+                <input type="text" v-model="test">
+                <button @click="fn" class="btn">提交</button>
+            </div>
+            <p class="no">未完成</p>
+            <div v-for="item,index in arr1" class="add animated fadeInUp">
+                <input type="checkbox" :checked="check" @click="kk(index)">
+                <span>{{item}}</span>
+                <span class="data">{{time.getFullYear()}}/{{time.getMonth()}}/{{time.getDate()}}</span>
+                <span class="canel" @click="canel(index)">取消</span>
+            </div>
+            <p class="no">已完成</p>
+            <div v-for="item,index in arr2" class="add animated fadeInUp">
+                <input type="checkbox" checked="checked">
+                <span>{{item}}</span>
+                <span class="canel" @click="del(index)">删除</span>
+            </div>
+            <p class="no">已取消</p>
+            <div v-for="item,index in arr3" class="add animated fadeInUp">
+                <del><span>{{item}}</span></del>
+                <span class="canel" @click="call(index)">恢复</span>
+            </div>
+        </div>
+    </div>
+    <script>
+        let app=new Vue({
+            el:"#app",
+            data:{
+                test:"",
+                check:false,
+                arr1:[],
+                arr2:[],
+                arr3:[],
+                time:new Date()
+            },
+            methods:{
+                // 点击添加数据
+                fn(){
+                    this.arr1.unshift(this.test);
+                    this.test="";
+                },
+                // 点击到已完成
+                kk(num){
+                    this.check=true;
+                    if(this.check==true){
+                        this.arr2.unshift(this.arr1[num]);
+                        this.arr1.splice(num,1); 
+                        this.check = false
+                    }
+                },
+                // 点击取消到已取消
+                canel(num){
+                    this.arr3.unshift(this.arr1[num]);
+                    this.arr1.splice(num,1); 
+                },
+                // 删除
+                del(num){
+                    this.arr2.splice(num,1); 
+                },
+                // 恢复
+                call(num){
+                    this.arr1.unshift(this.arr3[num]);
+                    this.arr3.splice(num,1); 
+                }
+            }
+        })
+    </script>
+</body>
+</html>

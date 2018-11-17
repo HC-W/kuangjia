@@ -1,0 +1,40 @@
+做一个项目的时候，不可能只有开发代码
+
+vue-cli
+    1、开发环境     ： server，自动编译，还能帮你找找错
+    2、检测代码质量 ： 其中有一个eslink (团队代码规范：加空格)===> var a = 10;
+    3、打包、编译   ：webpack , babel
+    4、测试         ：稍微大一点公司的项目都是有测试流程的(测试是必须的)
+
+eslint ：检测代码质量的一个配置
+    标准版 -- 使用的比较多
+    预设版 -- 
+单元测试
+    只能测试某一个模块
+    对每一个模块，组件来单独测试
+    jest :方便上手(比较简单)
+e2e(NightWatch):   
+    把所有的模块，绑在一起进行测试
+    把网页跑起来，然后测试
+
+命令：
+    cnpm i -g vue-cli
+    vue -V  :查看是否安装好，安装的版本
+    vue list : 列出可用的官方模板 (此时的webpack为模板)
+    vue init webpack my-project 
+        项目名称
+        作者
+        "选择第一个" ：standalone
+        y
+        y
+        "选择第一个" : Standard
+        y
+        "选择第一个" : jest
+        y
+        "选择第一个" : npm
+        如果安装失败，在my-project文件夹下删除node-modules
+        然后进去这个文件夹 ： cnpm i 重新下载，
+        在这个文件夹目录下 ： npm run dev 进行服务器的启动(localhost:8080)
+        在浏览器地址栏中输入 : localhost:8080 ,会跳转到vue.js App页面
+
+

@@ -1,0 +1,159 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>精选列表</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <script src="./vue.js"></script>
+    <script src="//cdn.bootcss.com/vue-resource/1.0.3/vue-resource.js"></script>
+    <script src="./vue-router.js"></script>
+    
+</head>
+
+<body>
+    <style>
+        html,
+        body,
+        div,
+        p,
+        a,
+        span {
+            margin: 0;
+            padding: 0;
+        }
+        a{
+            text-decoration: none;
+            color: black;
+        }
+        .wrap {
+            width: 100%;
+        }
+
+        .header {
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+            height: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid grey;
+        }
+
+        .all {
+            border-bottom: 1px solid gray;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .top,
+        .content {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .ding {
+            background-color: red;
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 3px;
+            color: white;
+            font-size: 15px;
+        }
+
+        .title {
+            display: inline-block;
+            width: 85%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        .content {
+            margin-top: 8px;
+        }
+
+        .co_right {
+            width: 83%;
+            font-size: 15px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .share {
+            background-color: green;
+        }
+    </style>
+    <script>
+        // let router = new VueRouter({
+        //     // 路由的映射表
+        //     routes: [
+        //         {
+        //             path: "/:id"
+        //         }
+        //     ]
+        // })
+    </script>
+    <div class="wrap">
+        <p class="header">
+            <span>三</span>
+            <span>全部</span>
+            <span>飞机</span>
+        </p>
+        <div id="app">
+            <div v-for="item in imgList" class="all">
+                <router-link :to="item.id">
+                    <div class="top">
+                        <span class="ding" v-if="item.top">置顶</span>
+                        <span class="ding share" v-else>分享</span>
+                        <span class="title">{{item.title}}</span>
+                    </div>
+                    <div class="content">
+                        <img :src="item.author.avatar_url" alt="" style="width:50px;height:50px;border-radius:50%;">
+                        <div class="co_right">
+                            <p class="author">{{item.author.loginname}}</p>
+                            <p class="reply">{{item.reply_count}}/{{item.visit_count}}</p>
+                        </div>
+                    </div>
+                </router-link>
+            </div>
+        </div>
+    </div>
+    <script src="./dist/build.js"></script>
+
+</body>
+
+<!-- <script src="./src/index.js"></script> -->
+<!-- <script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            imgList: [],
+            getImgUrl: 'https://cnodejs.org/api/v1/topics'    //存数据接口               
+        },
+        created: function () {
+            this.getImg()             //定义方法
+        },
+        methods: {
+            getImg: function () {
+                var that = this;
+                that.$http({           //调用接口
+                    method: 'GET',
+                    url: this.getImgUrl  //this指data
+                }).then(function (response) {  //接口返回数据
+                    this.imgList = response.data.data;
+                }, function (error) {
+                })
+            },
+        },
+        router
+    })
+</script> -->
+
+</html>

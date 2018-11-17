@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>练习1</title>
+</head>
+<body>
+    <script src="../jquery-3.2.1.min.js"></script>
+    <script>
+        async function show(){
+            console.log("开始");
+            console.log(1);
+            // 第一个请求并获取值
+            let p=await $.ajax({
+                url:"10月25/1.json",
+                dataType:"json"
+            })
+            // 获取里面需要的部分
+            let item=p.object_list;
+            // 数组进行遍历
+            item.forEach(element => {
+                // 输出需要的值
+                console.log(element.resource_id);
+                // return element.resource_id;
+            });           
+            // console.log(typeof(p));
+
+
+            console.log(2);
+            // 第二个请求
+            let k=await $.ajax({
+                url:"10月25/2.json",
+                dataType:"json"
+            })
+            // console.log(k);
+            let item2=k.object_list;
+            item2.forEach(element => {
+                console.log(element.resource_id);
+            });
+            console.log("结束");
+        }
+        show();
+    </script>
+</body>
+</html>

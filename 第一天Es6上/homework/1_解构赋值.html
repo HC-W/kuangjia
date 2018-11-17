@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>1_解构赋值</title>
+</head>
+<body>
+    <div id="wrap"></div>
+
+    <script>
+        // 获取div
+        let wrap=document.getElementById("wrap");
+        // console.log(wrap);
+        // 定义json所有数据
+        let Dt_json={
+    "object_list": [
+        {
+            "id": 14326075,
+            "username": "开始吧芍药姑娘",
+            "avatar": "https://b-ssl.duitang.com/uploads/files/201312/19/20131219204737_XVinc.jpeg",
+            "identity": [
+                "personal_certify"
+            ],
+            "score": 51761,
+            "tags": [
+                "园艺"
+            ],
+            "friendShip": 0,
+            "followCount": 0,
+            "beFollowCount": 0,
+            "canSendLetter": false,
+            "is_certify_user": false,
+            "background_image": "http://img4.duitang.com/uploads/files/201401/20/20140120184102_WQr2i.jpeg"
+        },
+        {
+            "id": 12344359,
+            "username": "AIRPHOTO",
+            "avatar": "https://b-ssl.duitang.com/uploads/people/201607/04/20160704113612_BYncj.jpeg",
+            "identity": [
+                "personal_certify"
+            ],
+            "score": 203398,
+            "tags": [
+                "摄影"
+            ],
+            "friendShip": 0,
+            "followCount": 0,
+            "beFollowCount": 0,
+            "canSendLetter": false,
+            "is_certify_user": false,
+            "background_image": "http://img4.duitang.com/uploads/files/201401/20/20140120183959_GfVFh.jpeg"
+        },
+        {
+            "id": 14528939,
+            "username": "栗阿阿阿",
+            "avatar": "https://b-ssl.duitang.com/uploads/people/201704/07/20170407202023_RxNPs.jpeg",
+            "identity": [
+                "personal_certify"
+            ],
+            "score": 29027,
+            "tags": [
+                "时尚"
+            ],
+            "friendShip": 0,
+            "followCount": 0,
+            "beFollowCount": 0,
+            "canSendLetter": false,
+            "is_certify_user": false,
+            "background_image": "https://b-ssl.duitang.com/uploads/item/201805/27/20180527225439_aVXeF.thumb.1000_220.jpeg-9_0_1.7366666666666666"
+        },
+        {
+            "id": 13364387,
+            "username": "星心小小",
+            "avatar": "https://a-ssl.duitang.com/uploads/people/201802/22/20180222220402_Gam4u.jpeg",
+            "identity": [
+                "personal_certify"
+            ],
+            "score": 9203,
+            "tags": [
+                "手工"
+            ],
+            "friendShip": 0,
+            "followCount": 0,
+            "beFollowCount": 0,
+            "canSendLetter": false,
+            "is_certify_user": false,
+            "background_image": "http://img4.duitang.com/uploads/files/201401/20/20140120183959_GfVFh.jpeg"
+        }
+    ]
+}   
+        // console.log(Dt_json);
+        let Dt_str="";
+        // for 循环遍历数据，取需要的值
+        // for(let i in Dt_json.object_list){
+        //     Dt_str +=
+        //     `
+        //     <h3 style='color:red;'>${Dt_json.object_list[i].username}</h3>
+        //     <h4>${Dt_json.object_list[i].tags}</h4>
+        //     `
+        // }
+        // wrap.innerHTML = Dt_str;
+        
+
+        Dt_json.object_list.forEach(
+            (item)=>{
+                Dt_str +=
+                `
+                <h3 style='color:red;'>${item.username}</h3>
+                <h4>${item.tags}</h4>
+                `
+            }
+        )
+        wrap.innerHTML = Dt_str;
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>7组件通信问题2</title>
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div :style="{ fontSize: postFontSize + 'em' }">
+            <blog-post v-for="post,index in posts" v-bind:key="index" v-bind:post="post" v-on:enlarge-text="fn">
+
+            </blog-post>
+            <!-- v-on:(自定义事件名)  监听子组件通信事件-->
+        </div>
+    </div>
+    <script>
+        Vue.component('blog-post', {
+            props: ['post'],
+            template: `
+                <div class="blog-post">
+                <h3>{{ post.title }}</h3>
+                <button v-on:click="fn">
+                    Enlarge text
+                </button>
+               
+                </div>
+            `,
+            methods: {
+                fn() {
+                    // $emit方法 向父级通信
+                    //参数一：自定义事件名
+                    //参数二：通信携带值
+                    this.$emit('enlarge-text',10);
+                }
+            }
+        })
+
+        let app = new Vue({
+            el: '#app',
+            data: {
+                posts: [
+                    {
+                        title: '1111'
+                    },
+                    {
+                        title: '2222'
+                    },
+                    {
+                        title: '3333'
+                    }
+
+                ],
+                postFontSize: 1
+            },
+            methods: {
+                //这个事件处理函数是一个方法：
+                fn($event) {
+                    //那么这个值将会作为第一个参数传入这个方法：
+                    console.log(this.$event);
+                    console.log($event);
+                    this.postFontSize += 0.1;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

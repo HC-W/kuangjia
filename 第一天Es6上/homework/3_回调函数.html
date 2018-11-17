@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>回调函数</title>
+</head>
+
+<body>
+    <!-- 
+        3. 回调函数需求
+            var arr = [10,33,44,55,88,20,32]
+            第一层回调函数 在不修改本身情况下 每个val 加10
+            第二层回调函数 在不修改本身情况下 每个val * 10
+            第三层回调函数 过滤掉所有 小于400 的值
+            第四层回调 求平均数
+     -->
+    <script>
+        // var arr = [10, 33, 44, 55, 88, 20, 32];
+
+        // // 回调函数
+
+
+        // 自己的代码
+        // function m(Arr) {
+        //     let arr = Arr;
+        //     (function (A) {
+        //         let B = A.map((val) => {
+        //             return val + 10;
+        //         })
+        //             // 第二层
+        //             (function (A) {
+        //                 let B = A.map((val) => {
+        //                     return val * 10
+        //                 })
+        //                     // 第三层
+        //                     (function (A) {
+        //                         let B = A.filter((val) => {
+        //                             return val < 400
+        //                         })
+        //                     })(B)
+        //             })(B)
+
+        //     })(arr)
+        // }
+        // m(arr);
+
+
+        // 领代码 
+        //  var arr = [10,33,44,55,88,20,32];
+        // function m(Arr){
+        //     let arr = Arr;
+        //     // 第一层
+        //     (function(A){
+        //         let B = A.map((val) => {
+        //             return val + 10
+        //         })
+        //         // 第二层
+        //         (function (A){
+        //             let B = A.map((val) => {
+        //                 return val * 10
+        //             })
+        //             // 第三层
+        //             (function (A){
+        //                 let B = A.filter( (val) => {
+        //                     return val < 400;
+        //                 } )
+        //             })(B)
+        //         })(B)
+        //     })(arr)
+        // }
+        // m(arr);
+
+
+        // 同桌代码
+        var arr = [10, 33, 44, 55, 88, 20, 32];
+
+        function m(Arr) {
+            let arr = Arr;
+            (function (A) {
+                let B = A.map((val) => {
+                    return val + 10;
+                });
+                console.log(B);
+                    //第二层
+                    (function (A) {
+                        let B = A.map((val) => {
+                            return val * 10;
+                        });
+                        console.log(B);
+                            //第三层
+                            (function (A) {
+                                let B = A.filter((val) => {
+                                    return val < 400;
+                                });
+                                console.log(B);
+                                    // (function (A){
+                                    //     let B=A.reduce(
+                                    //         (item,val,index,array)=>{
+                                    //             index<array.length-1?item+val:(item+val)/array.length
+                                    //         }
+                                    //     );
+                                    //     console.log(B);
+                                    // })(B)
+                            })(B)
+                    })(arr)
+            })(arr)
+        }
+        m(arr);
+
+
+
+
+
+
+        // const jia=arr.map(val=>val+10);
+        // console.log(jia);
+        // const cheng = arr.map(val=> val*10);
+        // console.log(cheng);
+        // const guoLv = cheng.filter(
+        //     val=>val<400
+        // );
+        // console.log(guoLv);
+
+        // const avg = arr.reduce(
+        //     (item,val,index,array)=>
+        //         // 第一种：三目运算符
+        //         index<array.length-1?item+val:(item+val)/array.length
+            // }
+                // 第二种
+                // if(index<array.length-1){
+                //         return item+val;
+                //     }else{
+                //         return (item+val)/array.length;
+                //     }
+            // }
+        // );
+        // 小数点位数为3位
+        // console.log(avg.toFixed(3));
+
+
+
+    </script>
+</body>
+
+</html>

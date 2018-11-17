@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        class  练习
+        学生的类  属性   性别   成绩   年龄
+          原型方法   成绩平均数
+              男女比例（精确到小数点3位）
+        */
+        
+
+        // 学生类
+        class Student{
+            // 构造器
+            constructor(sex,score){
+                this.sex=sex;
+                this.score=score;
+            }
+            fn(...arg){
+                console.log(arg);
+                let score=0;
+                arg[0].forEach(element => {
+                    score += element.score;
+                });
+                console.log(score/arg[0].length);
+            }
+        }
+        let arr=[];
+        for(let i = 0;i<5;i++){
+            let stu=new Student(rand(0,1),rand(60,100));
+            arr.push(stu);
+        }
+        // console.log(arr);
+
+        arr[0].fn(arr);
+
+
+
+
+
+        // 随机函数
+        function rand(min,max){
+            return Math.floor(Math.random()*(max+1-min)+min);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>promise</title>
+</head>
+<body>
+    <!-- ES6
+        promise
+        generator
+        ES7
+        async / await
+    -->
+    <script src="jquery-3.2.1.min.js"></script>
+    <script>
+
+        // promise   解决异步操作
+            /* 同步   ---串行了，前一步没有完事就不能执行下一步：比如代码报错后面就不会执行
+             同步优点：简单、方便
+             */
+            /*
+            异步：  --->并发   多个应用程序一起执行
+            异步优点： 性能、体验好     比如说:ajax
+            */
+
+            // 基本用法
+            let p=new Promise(
+                (resolve,reject)=>{
+                    // 同意  ===>  成功
+                    resolve()
+                    // 拒绝  ===>  失败
+                    reject()
+                }
+            );
+            // 使用
+            p.then(
+                ()=>{},
+                ()=>{}
+            )
+            // Promise 方法
+            // Promise.all()   与    所有都成功
+            // Promise.race()  或    只要一个完成
+                // 测速度：谁快谁回来，然后底下就不执行了
+
+            // promise 问题：
+                // promise  解除异步操作比较麻烦
+                // promise  有局限  带逻辑的异步操作麻烦
+
+
+
+        
+        // ajax  异步   ====>基于promise
+        let ajax=$.ajax({
+            url:"1.txt",
+            // success(data){
+            //     // promise  
+            //     // ok
+            //     console.log(data);
+            // },
+            // error(){
+            //     //error
+            //     console.log("请求失败！");
+            // }
+        }).then(
+            (data)=>{
+                console.log("成功",data);
+            },
+            ()=>{
+                console.log("失败");
+            }
+        )
+
+
+    </script>
+</body>
+</html>

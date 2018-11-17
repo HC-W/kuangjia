@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>函数暂停</title>
+</head>
+
+<body>
+
+    <!-- 使⽤promise实现:
+            开始的时候console.log('start')
+            等待3秒后console.log(‘发送请求’)
+            之后⽤ajax对 本地 1.txt,2.txt,3.txt⽂件发出get请求，
+            之后利⽤解构赋值 a , b , c 对应 1.txt,2.txt,3.txt 返回值
+            请求返回后结果给下个promise
+            console.log输出结果 -->
+    <script src="../jquery-3.2.1.min.js"></script>
+    <script>
+        let p = new Promise(
+            (resolve, reject) => {
+                // 成功
+                resolve()
+                // 失败
+                reject()
+            }
+        )
+        let p2 = Promise.all([
+            $.ajax({
+                url: "../1.txt",
+                type: "GET"
+            }),
+            $.ajax({
+                url: "../2.txt",
+                type: "GET"
+            }),
+            $.ajax({
+                url: "../3.txt",
+                type: "GET"
+            })
+        ]
+        )
+
+        p.then(
+            () => {
+                console.log("start");
+                setTimeout(function () {
+                    console.log("发送请求");
+                    p2.then(
+                        (data) => {
+                            var arr = { a, b, c } = { a: data[0], b: data[1], c: data[2] };
+                            // console.log(arr);
+                            // return arr;
+                            let p3 = new Promise(
+                                (resolve, reject) => {
+                                    resolve(arr);
+                                    reject();
+                                }
+                            ).then(
+                                arr => {
+                                    console.log(arr);
+                                    for(let k in arr){
+                                        console.log(arr[k]);
+                                        arr[k].forEach(element => {
+                                            console.log(element);
+                                        });
+                                    }
+                                },
+                                () => { }
+                            )
+                        },
+                        () => { }
+                    )
+                }, 3000)
+            },
+            () => { }
+        )
+    </script>
+</body>
+</html>

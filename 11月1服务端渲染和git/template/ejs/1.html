@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/1.css">
+    <title>ejs</title>
+</head>
+<body>
+    <li>
+        <!-- 代码块：不能在注释里面写，因为这些符号注释不了，还是会被读取的-->
+        <%=str%>
+        <!-- 标签字符串不能使用“=”，因为会被转义，比如 "<" 会被转义为&lt; 所以需要使用 "-" 号-->
+        <%-hl%>
+        <!-- 数据循环 -->
+        <%arr.forEach(item=>{%>
+            <li><%=item%></li>
+        <%})%>
+    </li>
+    <%-include(fter)%>
+</body>
+</html>

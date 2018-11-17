@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件修饰符</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="app" @click="Fn">
+        <!-- @click.prevent：只触发事件，不进行页面的跳转（没有跳转到百度） -->
+        <a href="http://www.baidu.com">链接到百度</a>
+    </div>
+    <script>
+        let app=new Vue({
+            el:"#app",
+            data:{
+               
+            },
+            methods:{
+                fn(){
+                    console.log("跑了");
+                },
+                Fn(){
+                    console.log("我被触发了");
+                }
+            }
+            
+        })
+    </script>
+</body>
+</html>

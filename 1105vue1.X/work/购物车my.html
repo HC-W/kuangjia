@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta title="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>购物车</title>
+    <script src="./vue.js"></script>
+    <style>
+        #app{
+            width: 850px;
+            margin: 0 auto;
+            border-top: 2px solid red;
+            border-bottom: 2px solid red;
+        }
+        .kk{
+            display: flex;
+            justify-content: space-around;
+        }
+       .choose{
+           width: 210px;
+           height: 140px;
+       }
+
+    </style>
+</head>
+<body>
+    <div id="app">
+        <p>单击选择您要购买的商品：</p>
+        <!-- 图片 -->
+        <div class="kk">
+            <div v-for="item,index in goods" v-once>
+                <img :src="item.url" alt="" :title="item.title" @click="addShop(index)" class="choose">
+            </div>
+        </div>
+        <!-- 购物表格 -->
+        <div style="text-align: center">
+            <table>
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>商品</th>
+                        <th>单价</th>
+                        <th>数量</th>
+                        <th>总金额</th>
+                        <th>删除</th>
+                    </tr>
+                </thead>
+                <tbody v-if="arr.length">
+                    <tr v-for="item,index in arr">
+                        <td>{{index+1}}</td>
+                        <td>
+                            <img :src="item.url" alt="" style="width:50px;height:40px;"></td>
+                        <td>￥{{item.price}}</td>
+                        <td>
+                            <button>-</button>
+                            {{item.num}}
+                            <button>+</button>
+                        </td>
+                        <td>￥{{item.total}}</td>
+                        <td>删除</td>
+                    </tr>
+                </tbody>
+                
+            </table>
+        </div>
+        <div>
+            <p>
+                <span>全选</span>
+                <span>取消全选</span>
+            </p>
+            
+            <p>
+                <span>结账</span>
+                <span>￥</span>
+            </p>
+        </div>
+        
+    </div>
+    <script>
+        let app=new Vue({
+            el:"#app",
+            data:{
+                goods: [
+                    {
+                        url: "./img/1.png",
+                        title: "无线鼠标",
+                        zeng1:'赠品：',
+                        zeng2:'鼠标垫',
+                        price: 21,
+                        num:"1",
+                        total:21
+
+                    },
+                    {
+                        url: "./img/2.png",
+                        title: "键盘",
+                        zeng1:'赠品：',
+                        zeng2:'旅行小样',
+                        price: 60,
+                        num:"1",
+                        total:60
+                    },
+                    {
+                        url: "./img/3.png",
+                        title: "U盘",
+                        zeng1:'赠品：',
+                        zeng2:'鞋带',
+                        price: 25,
+                        num:"1",
+                        total:25
+                    }
+                ],
+                arr:[]
+            },
+            methods:{
+                // 添加商品
+                addShop(num){
+                    let bol=this.arr.filter((item)=>{
+                        return item.title==this.goods[num].title;
+                    })
+                    if(!bol.length){
+                        this.arr.push(this.goods[num]);
+                    }else{
+                        return 0;
+                    }
+                    
+                },
+                // 全选
+                selectAll(){
+
+                },
+                // 取消
+                clearAll(){
+
+                }
+            }
+        })
+    </script>
+</body>
+</html>

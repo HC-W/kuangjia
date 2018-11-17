@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./vue.js"></script>
+    <title>vue组件命名规范</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 必须转化为小写且用连接符连接 -->
+        <button-counter></button-counter>
+        <hr>
+        <!-- 在使用的时候不能使用驼峰命名 -->
+        <ButtonCounter></ButtonCounter>
+    </div>
+
+    <script>
+        // 定义一个名为 button-counter 的新组件，自定义元素
+        // 定义方法 Vue.component
+        // 组件的命名规范 ：区别于html自到的 元素(标签)，比如div，p，button等
+        Vue.component('ButtonCounter', {
+            template: '<button>count</button>'
+        })
+
+
+        let app = new Vue({
+            el: "#app",
+            data: {
+
+            }
+        })
+    </script>
+</body>
+
+</html>

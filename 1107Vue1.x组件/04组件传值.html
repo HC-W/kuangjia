@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./vue.js"></script>
+    <title>组件传值</title>
+</head>
+
+<body>
+    <div id="app">
+        <blog-post title="My journey with Vue"></blog-post>
+        <blog-post title="Blogging with Vue"></blog-post>
+        <blog-post title="Why Vue is so fun"></blog-post>
+        <!-- 
+            通过 v-bind 来输出 app ==> vue ==> data里面的数据
+         -->
+        <blog-post :title="name"></blog-post>
+    </div>
+
+    <script>
+        // props 里面的值要和组件身上的属性对应上
+        // props 相当于==>import   []相当于==>{a,b,c}
+        // 组件调用的时候，身上属性  ===> export
+        Vue.component('blog-post', {
+            props: ['title'],
+            template: '<h3>{{ title }}</h3>'
+        })
+        let app = new Vue({
+            el: "#app",
+            data: {
+                name:"组件"
+            }
+        })
+    </script>
+</body>
+
+</html>

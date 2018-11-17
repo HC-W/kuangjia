@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>promise</title>
+</head>
+<body>
+    <script src="jquery-3.2.1.min.js"></script>
+    <script>
+        // new 实例化一个promise对象
+        let p=new Promise(
+            // callback   回调函数
+            (resolve,reject)=>{
+                // new Promise    实例化的时候，就会被执行
+                // 状态一经确认，不能被修改
+                console.log("什么？");
+                resolve()     //成功
+                reject()      //失败
+            }
+        );
+        // p.then(
+        //     ()=>{
+        //         console.log("成功");
+        //     },
+        //     ()=>{
+        //         console.log("失败");
+        //     }
+        // );
+
+        document.onclick=function(){
+            // 内部请求结束了  会调用 .then方法
+            // 找到当前  promise 的状态  state 和  value(浏览器中可以查看)
+            p.then(
+                // 一个是成功
+                ()=>{
+                    console.log("成功");
+                },
+                // 一个是失败
+                ()=>{
+                    console.log("失败");
+                }
+            )
+        }
+
+
+        
+    </script>
+</body>
+</html>

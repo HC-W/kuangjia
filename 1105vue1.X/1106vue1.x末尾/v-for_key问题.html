@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-for_key问题</title>
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div v-for="item,index in todos" :key="index">
+            {{item.text}}
+        </div>
+    </div>
+    <!-- 
+        5.v-for
+  key
+
+  数据自动同步到视图  ====> 根据你数据变了 自动生成html 
+                    ====> 这个我也能做 但是性能问题
+                    ====> DOM操作 是js操作里面最慢的一个 也是影响性能最大
+                    ====> 这个东西应该被优化
+
+
+  1.把所有元素删了，重新生成一遍     结果没问题,但是性能太差(几百几千个元素 ==> 完全无法接受)
+  2.找出哪些不一样了    ( 修改,删除等 找个被改变的那个 )           性能很高
+
+  vue需要能把数据和DOM组件对应起来——提高性能
+    vue让你添加一个  :key="数据的ID"  key不能变的,不重复的
+        key 被 vue 吃进去了
+        你不加 vue 也会加 但是它那个是通用的
+  虚拟DOM, 真是的DOM元素 操作起来性能低
+
+  生成一个li
+  {
+    type: 'li',
+    title: '今天天气不错',
+    children: [
+      {
+        type:"span",
+        title: "111"
+      }
+    ]
+  }
+
+  watch computed methods 用哪个都行
+
+     -->
+    <script>
+        let app = new Vue({
+            el: "#app",
+            data: {
+                todos: [
+                    { text: '学习 JavaScript' },
+                    { text: '学习 Vue' },
+                    { text: '整个牛项目' }
+                ]
+            }
+        })
+    </script>
+</body>
+
+</html>

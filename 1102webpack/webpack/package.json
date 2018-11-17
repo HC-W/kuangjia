@@ -1,0 +1,25 @@
+{
+  "name": "wang",
+  "version": "1.0.0",
+  "description": "我们开启了新的旅程",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --config devserver.webpack.config.js",
+    "server": "webpack-dev-server --inline --config devserver.webpack.config.js",
+    "babel": "webpack --config babel.loader.webpack.config.js",
+    "cssLoader": "webpack-dev-server --config css.loader.webpack.config.js"
+  },
+  "author": "诺",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.6.1",
+    "css-loader": "^0.28.11",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.6.0",
+    "webpack-cli": "^3.1.1",
+    "webpack-dev-server": "^3.1.3"
+  }
+}

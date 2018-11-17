@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>generator</title>
+</head>
+<body>
+    <script>
+        // 1、生成器函数   等待异步完成，执行下面代码
+        function* show(){
+            console.log(2);
+            let data=yield new Promise(
+                (resolve,reject)=>{
+                    setTimeout(()=>{
+                        resolve(100);
+                    },3000)
+                }
+            );
+            console.log(data);
+            console.log(3);
+            return 30;
+        }
+        // 2、调用  next()  完整的
+        // 3、变量去接生成器函数
+        let s=show();
+        let p=s.next();
+        console.log(p);
+        p.value.then(data=>{
+            s.next(data);
+        });
+        // 参数  变量,next(参数)  
+        // 返回
+    </script>
+</body>
+</html>

@@ -1,0 +1,241 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>精选列表</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <script src="./jquery-3.2.1.min.js"></script>
+    <script src="./vue.js"></script>
+    <script src="//cdn.bootcss.com/vue-resource/1.0.3/vue-resource.js"></script>
+    <script src="./vue-router.js"></script>
+
+</head>
+
+<body>
+    <style>
+        html,
+        body,
+        div,
+        p,
+        a,
+        span {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        #wrap {
+            width: 100%;
+        }
+
+        .header {
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+            height: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid grey;
+        }
+
+        .all {
+            border-bottom: 1px solid gray;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .top,
+        .content {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .ding {
+            background-color: red;
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 3px;
+            color: white;
+            font-size: 15px;
+        }
+
+        .title {
+            display: inline-block;
+            width: 85%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        .content {
+            margin-top: 8px;
+        }
+
+        .co_right {
+            width: 83%;
+            font-size: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .share {
+            background-color: green;
+        }
+        .ar_title{
+            width: 100%;
+            padding: 7px;
+            box-sizing: border-box;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            background-color: #E2E5EA;
+            border-radius: 3px;
+            font-size: 17px;
+            font-weight: 600;
+        }
+        .ar_all{
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .ar_ding{
+            padding: 3px 10px;
+        }
+        .ar_content{
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .ar_content img{
+            width: 100%;
+        }
+    </style>
+    <script>
+        let router = new VueRouter({
+            // 路由的映射表
+            routes: [
+                // 首页
+                {
+                    path: "/",
+                    component: {
+                        template:
+                            `
+                    <div>
+                        <p class="header">
+                            <span>三</span>
+                            <span>全部</span>
+                            <span>飞机</span>
+                        </p>
+                        <div id="app">
+                            <div v-for="item in json" class="all">
+                                <router-link :to="{name:'topic',params: { 'id': item.id }}">
+                                    <div class="top">
+                                        <span class="ding" v-if="item.top">置顶</span>
+                                        <span class="ding share" v-else>分享</span>
+                                        <span class="title">{{item.title}}</span>
+                                    </div>
+                                    <div class="content">
+                                        <img :src="item.author.avatar_url" alt="" style="width:50px;height:50px;border-radius:50%;">
+                                        <div class="co_right">
+                                            <p class="author">{{item.author.loginname}}</p>
+                                            <p class="reply">{{item.reply_count}}/{{item.visit_count}}</p>
+                                        </div>
+                                    </div>
+                                </router-link>
+                            </div>
+                        </div>
+                    </div>
+                        `,
+                        data() {
+                            return{
+                                json:[]
+                            }
+                        },
+                        created(){
+                            $.ajax({
+                                url:"https://cnodejs.org/api/v1/topics"
+                            }).then((data)=>{
+                                this.json=data.data;
+                            })
+                        }
+                    }
+                },
+                // 文章页
+                {
+                    path:"/topic/:id",
+                    name:"topic",
+                    component:{
+                        template:
+                            `
+                    <div>
+                        <p class="header">
+                            <span>三</span>
+                            <span>主题</span>
+                            <span>飞机</span>
+                        </p>
+                        <div id="app" class="ar_all">
+                            <p class="ar_title">{{json.title}}</p>
+                            
+                            <div class="content">
+                                <img :src="json.author.avatar_url" alt="" style="width:50px;height:50px;border-radius:50%;">
+                                <div class="co_right">
+                                    <p class="author">{{json.author.loginname}}</p>
+                                    <div>
+                                        <p class="ding ar_ding" v-if="json.top">置顶</p>
+                                        <p class="ding share ar_ding" v-else>分享</p>
+                                        <p class="reply">{{json.visit_count}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div v-html="json.content" class="ar_content"></div>
+                    </div>
+                        `,
+                        data(){
+                            return {
+                                json:[]
+                            }
+                        },
+                        created(){
+                            // console.log(this.$route.params);
+                            $.ajax({
+                                url:`https://cnodejs.org/api/v1/topic/${this.$route.params.id}`
+                            }).then((data)=>{
+                                // console.log(data.data);
+                                this.json=data.data;
+                            })
+                        }
+                    }
+
+                }
+            ]
+        })
+    </script>
+    <div id="wrap">
+        <router-view></router-view>
+    </div>
+    <!-- <script src="./dist/build.js"></script> -->
+
+</body>
+<script>
+    var wrap = new Vue({
+        el: '#wrap',
+        data: {
+
+        },
+        router
+    })
+</script>
+
+</html>

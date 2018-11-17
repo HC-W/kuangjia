@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>面向对象</title>
+</head>
+<body>
+    <script>
+        // class   定义类的方式
+        //  Person  类名
+        class Person{
+            // 构造器  new ===> constructor
+            constructor(name,age){
+                this.name=name;
+                this.age=age;
+                this.fn=function(){
+                    console.log("今天中午吃什么？");
+                }
+            }
+            fn(){
+                console.log("ES6/ES7 正在学习！");
+            }
+        }
+        let wang=new Person("云朵","20");
+        // console.dir(wang);
+
+        // extends  继承方法
+        class Job extends Person{
+            constructor(name,age,job){
+                // 超类（父类）  :继承属性
+                super(name,age);
+                this.job=job;
+            }
+            Fn(){
+                console.log(this.job);
+                console.log("继承的类！");
+            }
+        }
+
+        let wang2=new Job("小河","15","微信");
+        // console.dir(wang2);
+        
+        // 绑定
+        let Fn=wang2.Fn.bind(wang2);
+        // 普通函数   this是变化的  是根据调用的人决定的
+        // 箭头函数   this是恒定的  根据所在的环境决定的
+        // bind是我们  函数新增的方式:  绑定
+
+        // 语言===>人
+        // 箭头函数 <=> bind
+        // 箭头函数 > bind
+
+
+        document.onclick=function(){
+            let a = ()=>{
+                console.log(this);
+            }
+            a.bind(wang2);
+            a();
+        }
+        // Fn();
+
+
+
+        
+
+
+
+    </script>
+</body>
+</html>

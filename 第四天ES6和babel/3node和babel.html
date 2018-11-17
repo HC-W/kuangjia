@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>node和babel</title>
+</head>
+<body>
+    <script>
+        //  es6 ===>刚出来的时候并不是所有浏览器都支持
+        //  es6 ===>es5(优雅地将es6语法转换成ea5语法  ==> 优雅地降级)
+        //  babel  帮助我们进行es6 （到） ===>  es5  的语法降级
+        // babel 的历史
+        /*
+            最早作为  polyfill 工具(填充工具)
+                浏览器并没有提供某些功能
+                    通过语言、编程。软性地来增强浏览器的功能
+            现在大部分浏览器都支持 es6 语法
+
+            babel  ===>out
+            搞编译
+        */
+
+        /*
+        babel 和 node 的关系
+            node ===> 中间层(<===>)
+                1、web后台(小规模的应用) ===>任何一门语言 并发 的安全性都没有 java 好
+                2、工具类的应用  vue-cli   webpack   babel  react-cli
+            npm  ===> 包管理工具
+                优点：
+                    1、它里面有所有你想要的包，即使你查找的包是官网上已经消失了的版本  ===> 自动下载，自动更新
+                    2、自动下载所依赖的包
+        */
+        // babel  在我们的 npm 上面
+        /* npm 到底从哪个服务器上拽的包？
+                npm 是从国外的服务器上去下载东西的(慢)  
+            解决办法：
+                淘宝搞了一套镜像，而且是免费的  cnpm
+                npm.taobao.org  
+        */
+
+    </script>
+</body>
+</html>

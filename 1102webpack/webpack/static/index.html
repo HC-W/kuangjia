@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 
+        webpack-dev-server
+        相当于在内存中打包了一个build.js
+
+        此时引用的build.js文件是看不到的
+
+        如果此刻引用src里面的js资源是会报错的，但是如果把这个js放进静态资源就不会报错
+     -->
+    <script src="main.build.js"></script>
+</head>
+<body>
+    <h1>123456789</h1>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div v-once>
+            想要购买的商品
+            <!-- <img @click="addShop" price="21" title="鼠标" src="img/1.png" alt="">
+            <img @click="addShop" price="60" title="键盘" src="img/2.png" alt="">
+            <img @click="addShop" price="25" title="U盘" src="img/3.png" alt=""> -->
+        </div>
+
+        <div style="text-align:center;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>商品</th>
+                        <th>单价</th>
+                        <th>数量</th>
+                        <th>总金额</th>
+                        <th>删除</th>
+                    </tr>
+                </thead>
+                <tbody v-if="arr.length">
+                    
+                    <tr v-for="item,index in arr">
+                        {{item}}
+                        <!-- {{index}} -->
+                        <!-- <shop-tr :index="index" :item="item">
+
+                        </shop-tr> -->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            结算:{{ ReduceShop }}
+        </div>
+        <div @click="clearArrShop">
+            取消全选
+        </div>
+
+
+         <div v-for="val,index in arr">
+             {{index}}
+                <!-- <shop-tr  :index="index" :item="val">
+
+                </shop-tr> -->
+        </div> 
+
+    </div>
+    <script>
+        // Vue.component('ShopTr', {
+        //     props: ['item', 'index'],
+        //     template: `<a>
+        //             {{index}}
+                       
+        //                </a> 
+        //             `
+        // })
+
+        let app = new Vue({
+            el: '#app',
+            data: {
+                arr: [
+                    {
+                        img:'111',
+                        price: 111,
+                        num: 1,
+                        total: 111,
+                        title:'111'
+                    },
+                    {
+                        img:'111',
+                        price: 111,
+                        num: 1,
+                        total: 111,
+                        title:'111'
+                    }
+
+                ]
+            },
+            methods: {
+                // 添加商品
+                addShop() {
+                    //  到底这个对象都有什么属性
+                    //  { img,单价,数量,总金额,商品信息 }
+                    // return;
+
+                    let { src: img, title } = event.target;
+                    let bol = this.arr.filter((item) => {
+                        return item.title === title
+                    })
+                    if (!bol.length) {
+                        this.arr.push(
+                            {
+                                img,
+                                price: event.target.getAttribute('price'),
+                                num: 1,
+                                total: event.target.getAttribute('price'),
+                                title
+                            }
+                        )
+                    }
+
+                },
+                // 全选
+                selectAllShop() {
+
+                },
+                // 取消全选
+                clearArrShop() {
+                    this.arr = [];
+                },
+                // 添加数量
+                add(num) {
+                    this.arr[num].num += 1;
+                    this.arr[num].total = this.arr[num].num * this.arr[num].price;
+                }
+                // 
+            },
+            computed: {
+                ReduceShop() {
+                    let total = 0;
+                    this.arr.forEach(element => {
+                        total += element.total * 1;
+                    });
+                    return total;
+
+                }
+            }
+        })
+
+    </script>
+</body>
+
+</html>

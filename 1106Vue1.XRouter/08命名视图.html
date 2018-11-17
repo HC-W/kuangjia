@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+    <script src="./vue-router.js"></script>
+    <script>
+    
+        let router = new VueRouter({
+            routes:[
+                {
+                    path: '/user',
+                    components:{
+                        default:{
+                            template:'<div>我是默认的</div>'
+                        },
+                        a:{
+                            template:"<div>我是a</div>"
+                        }
+                    }
+                }
+            ]
+        })
+    </script>
+</head>
+<body>
+    <style>
+        .router-link-active{
+            color: red;
+            font-weight: 900;
+        } 
+    </style>
+    <div id="app">
+        <router-view name="a"></router-view>
+        <router-link to="/user">ggg</router-link>
+        <router-view></router-view>
+    </div>
+    <script>
+        let app = new Vue({
+            el : '#app',
+            router
+        })
+        
+    </script>
+
+</body>
+</html>

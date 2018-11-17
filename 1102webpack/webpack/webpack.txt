@@ -1,0 +1,19 @@
+webpacl@4.6.0版本  (核心库)
+webpack-cli 3.1.1  (提供了一些命令行工具)
+webpacl-dev-server 3.1.3   (server===>依赖webpack-cli)
+................................................................
+
+下午运行步骤：
+    webpack --config devserver.webpack.config.js    (只能打包)
+
+1、webpack 本身就是打包的
+2、devServer  开发服务器
+3、loader ---翻译
+    babel-loader  es6,7 (async/await) 的语法翻译成es4,es5
+
+babel-loader 
+    1、babel-loader@7.1.4  给webpack 用的，webpack得告诉如何解析使用它
+    2、babel-core@6.26.0  babel 的核心库
+    3、babel-preset-env@1.6.1    环境预设
+
+css-loader@0.28.11

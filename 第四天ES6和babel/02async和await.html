@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>async和await</title>
+</head>
+<body>
+    <script>
+        async function show(){
+            console.log(2);
+            let data = await new Promise(
+                (resolve,reject)=>{
+                    // 网路请求的时间来决定
+                    setTimeout(()=>{
+                        resolve(100);
+                    },3000)
+                }
+            )
+            console.log(data);
+            let Data = await new Promise(
+                (resolve,reject)=>{
+                    // 网路请求的时间来决定
+                    setTimeout(()=>{
+                        resolve({
+                            "name":"hahaha",
+                            "age":18,
+                            "sex":"男"
+                        });
+                    },3000)
+                }
+            )
+            console.log(Data);
+            console.log(3);
+        }
+        show();
+    </script>
+</body>
+</html>

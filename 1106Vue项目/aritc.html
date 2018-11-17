@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>文章内容</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <script src="./vue.js"></script>
+    <script src="//cdn.bootcss.com/vue-resource/1.0.3/vue-resource.js"></script>
+    <script src="./vue-router.js"></script>
+    
+</head>
+
+<body>
+    <div id="app">
+         <router-view></router-view>   
+    </div>
+    <script src="./dist/build.js"></script>
+</body>
+
+<!-- <script src="./src/index.js"></script> -->
+<!-- <script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            imgList: [],
+            getImgUrl: 'https://cnodejs.org/api/v1/topics'    //存数据接口               
+        },
+        created: function () {
+            this.getImg()             //定义方法
+        },
+        methods: {
+            getImg: function () {
+                var that = this;
+                that.$http({           //调用接口
+                    method: 'GET',
+                    url: this.getImgUrl  //this指data
+                }).then(function (response) {  //接口返回数据
+                    this.imgList = response.data.data;
+                }, function (error) {
+                })
+            },
+        },
+        router
+    })
+</script> -->
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>练习2</title>
+</head>
+<body>
+    <script src="../jquery-3.2.1.min.js"></script>
+    <script>
+        function* show(){
+            let p=yield $.ajax({
+                url:"10月25/1.json",
+                dataType:"json"
+            })
+            // console.log(p);
+            
+            let c=yield p;
+            console.log(c);
+            return 20;
+        }
+
+        let s=show();
+        let k=s.next();     //运行到了ajax完毕
+        //ajax属于 Primise,所以需要使用then
+        k.value.then(
+            //获取到里面的全部数据
+            data=>{
+                // 把数据传回去，使用上面的p 进行接收
+                let l=data.object_list;
+                // console.log(l.length);
+                let c=s.next(l)
+                s.next(c.value);
+                l.forEach(element => {
+                    // s.next(element);
+                    console.log(element);
+                });
+                
+                // for(let j =0;j<l.length;j++){
+                //     // s.next(l[j]);
+                //     console.log(l[j])
+                  
+                // }
+            }
+        );
+    </script>
+</body>
+</html>

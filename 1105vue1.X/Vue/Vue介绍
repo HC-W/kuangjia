@@ -1,0 +1,66 @@
+介绍一下
+
+angular：最早出来 (V1.x=>最早的主流)
+    V1.x(只做于了解)  V2.x(官网都找不到了，官网觉得丢人)  V4.x(angular.io)
+
+vue react 前后脚出来的
+    Vue  V1.x  v2.x (国人出的，大陆用的比较多)
+    react  facebook  外国人用的比较多
+MVC  //MVVM
+    经典的MVC模型
+        M -model 模型 ==>管理数据(ajax,jsonp)
+        V -view  视图 ==>用户看的地方
+        C -controller 控制器 ==>业务逻辑，控制整个程序的流向
+    请求都要经过C控制器的同意，数据请求才能进行
+    好处：
+        1、分离 ==> 简洁，方便测试
+        2、分工 
+    缺点：
+        1、直接用比较麻烦 ：需要看流程是怎么走的
+        2、MVC相互之间需要关联，耦合度高
+    MV / (C)==>VM ===>做的class练习
+        优点：
+            1、业务逻辑复用，提取方便
+            2、视图有关的代码，最大限度重用
+
+1、创建一个vue对象
+    let app=new Vue({
+        el:"节点",
+        data:{
+            数据
+        }
+    })
+视图层
+    1、输出{{}}
+数据绑定
+    1、单向{{输出}} 数据==>视图
+    2、双向 v-model 数据<==>视图
+
+vue里的属性==>指令
+    增强html的功能：属性的扩展
+
+    v-(就是指令) ==>里面可以直接使用data里面的值
+
+属性绑定：
+    v-bind :属性="数据"
+    v-bind:style="数据对象"
+    v-bind:class="数据对象"
+        (v-bind:):style / (v-bind:):class
+事件绑定：
+    v-on:xxx="函数"
+    (v-on:)@xxx
+数据循环
+    v-if / v-show
+        v-if:创建和删除的操作，删除整个dom解构，直接在浏览器控制台不显示
+        v-show：显示和隐藏的操作  ，相当于display ="none"
+        v-for :v-for="val,index in (数据arr,json)";
+渲染
+    1、{{}} 转义输出，html标签显示出来
+    2、v-html 标签输出
+
+体验和优化
+    v-cloak ===>{{}} 模板编译完成之后显示/(none)  
+
+    优化：
+    v-once ===>只渲染1次  
+    v-pre  ===>禁用标签里面的表达式

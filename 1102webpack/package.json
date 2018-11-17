@@ -1,0 +1,12 @@
+{
+  "name": "wang",
+  "version": "1.0.0",
+  "description": "这是3.6.0的余温",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build":"webpack --config webpack.config.wyq.js"
+  },
+  "author": "诺",
+  "license": "MIT"
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jsonp</title>
+</head>
+<body>
+    <!-- jsonp:跨域  利用script的src
+    
+    https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=s&cb=show
+
+    jsonp 利用我们的script src  进行跨域(GET)
+    你必须要传递至少一个参数(callback===cb(回调函数))
+-->
+
+    <script> 
+       let show=(data)=>{
+           console.log(data);
+       }
+       setTimeout(
+           ()=>{
+               let sc=document.createElement("script");
+               sc.src="https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=s&cb=show";
+               document.body.appendChild(sc);
+           },3000
+       )
+    </script>
+</body>
+</html>

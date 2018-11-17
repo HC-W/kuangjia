@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./vue.js"></script>
+    <title>vue组件v-model</title>
+</head>
+
+<body>
+    <div id="app">
+        <input v-model="searchText">
+        <custom-input v-bind:value="searchText" v-on:input="searchText = $event"></custom-input>
+        <custom-input v-model="searchText"></custom-input>
+    </div>
+
+    <script>
+        // props 里面的值要和组件身上的属性对应上
+        // props 相当于==>import   []相当于==>{a,b,c}
+        // 组件调用的时候，身上属性  ===> export
+        Vue.component('custom-input', {
+            props: ['value'],
+            template: `
+                <input
+                v-bind:value="value"
+                v-on:input="$emit('input', $event.target.value)"
+                >
+            `
+        })
+        let app = new Vue({
+            el: "#app",
+            data: {
+                searchText:""
+            }
+        })
+    </script>
+</body>
+
+</html>

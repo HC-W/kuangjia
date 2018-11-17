@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function *show(){
+
+            let b=yield new Promise(
+                (resolve,reject)=>{
+                    setTimeout(()=>{
+                        resolve(Math.random())
+                    },3000)
+                }
+            );
+            console.log(b);
+            yield new Promise(
+                (resolve,reject)=>{
+                    setTimeout(()=>{
+                        resolve((b*10).toFixed(2))
+                    },3000) 
+                }
+            );
+
+            yield;
+        }   
+        let p = show();
+        let b=p.next();
+        // console.log(b.val);
+
+        // b.value.then((data)=>{
+        //     console.log(data);
+        // });
+        console.log(
+            b.value.then(
+                (data)=>{
+                let c=p.next(data);
+                return c.value
+            }).then(
+                data=>{
+                    console.log(data);
+                }
+            )
+        ); 
+
+        // console.log(b.next());
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jsonp2</title>
+</head>
+<body>
+    <input type="text" id="Bt">
+    <ul id="list"></ul>
+    <script>
+        let Bt=document.getElementById("Bt");
+        let list=document.getElementById("list");
+        let callback=(data)=>{
+            // console.log(data);
+            // data.s.join("<br>");
+            // console.log(data.s.join("<br>"));
+            list.innerHTML=data.s.join("<br>");
+        }
+        Bt.oninput=()=>{
+            let sc=document.createElement("script");
+            // ===> 函数调用  ===>后端php  node  注入函数
+            sc.src=`https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=${event.target.value}&cb=callback`;
+            document.head.appendChild(sc);
+        }
+    </script>
+</body>
+</html>

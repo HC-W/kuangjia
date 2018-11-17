@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>函数</title>
+</head>
+
+<body>
+    <script>
+        let show = (a, b) => {
+            // 快捷键  ： clg   console.log
+            return a + b;
+        }
+        // alert(show(1,2));
+
+        let b = num => num;
+        // alert(b(11));
+
+        // filter    过滤
+        var words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
+
+        //看原生代码时需要看什么：
+        /*
+            1、返回值
+            2、参数
+            3、他的判断逻辑
+        */
+        // const result = words.filter(function(val,index,arr){
+        //     // console.log(a+","+b+","+c+","+d+","+e+","+f);
+        //     // 查看参数的作用
+        //     console.log(arguments);
+        //     return val.length>6;
+        // });
+        // console.log(result);
+
+        var name = '潘晓晓';
+        var json = {
+            name: '陈明柳',
+            fn: function(){
+                
+                return function(){
+                    console.log(this);
+                    console.log(this.name);
+                }
+                return () => {
+                    console.log(this);
+                    console.log(this.name);  
+                }
+            }
+        } 
+         // window.json.fn()
+         window.json.fn()();
+    </script>
+</body>
+
+</html>

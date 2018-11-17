@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>监听路由变化</title>
+    <script src="./vue.js"></script>
+    <script src="./vue-router.js"></script>
+    <style>
+        .router-link-active{
+            color: red;
+            font-weight: 900;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // 一个隐式的vue实例
+        let router=new VueRouter({
+            // 路由的映射表
+            routes:[
+                {
+                    path:"/topic/:id",
+                    component:{
+                        template:"<div>111111{{$route.params}}</div>",
+                        beforeRouteUpdate(to,from,next){
+                            // 路由在变化之前得到一个通知
+                            // to 是要去哪里，from是从哪去
+                            // next 和 express 里面的中间件一样
+                            if(confirm("如果离开本页，当前修改不会被保存")){
+                                next();
+                            }
+                        }
+                    }
+                }
+            ]
+        })
+    </script>
+    <div id="app">
+        <!-- cnode -->
+        <router-link to="/topic/111">
+            topoic-111
+        </router-link>
+        <router-link to="/topic/222">
+            topoic-222
+        </router-link>
+        <!-- $route  在vue里是一个全局的变量
+            代表当前的路由信息 -->
+        <!-- {{$route}} -->
+       <router-view>
+           
+       </router-view>
+    </div>
+    <script>
+        let app=new Vue({
+            el:"#app",
+            data:{
+                
+            },
+            router,
+            watch:{
+                $route(newVal,oldVal){
+                    console.log("从：",oldVal);
+                    console.log("到：",newVal);
+                }
+            }
+        })
+    </script>
+</body>
+</html>

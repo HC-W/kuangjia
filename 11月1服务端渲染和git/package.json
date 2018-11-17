@@ -1,0 +1,16 @@
+{
+  "name": "wang",
+  "version": "1.0.0",
+  "description": "渲染",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "诺",
+  "license": "MIT",
+  "devDependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "pug": "^2.0.3"
+  }
+}

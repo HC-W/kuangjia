@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="http://localhost:8099/socket.io/socket.io.js"></script>
+    <title>Document</title>
+    <script>
+        let socket=io.connect("ws://localhost:8099/");
+        
+        socket.on("www",(data)=>{
+            console.log(data);
+        })
+        let num=1000;
+        setInterval(()=>{
+            num++;
+            socket.emit("wyq",num)
+        },1000);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

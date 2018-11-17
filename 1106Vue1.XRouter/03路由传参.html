@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue路由</title>
+    <script src="./vue.js"></script>
+    <script src="./vue-router.js"></script>
+    
+    <script>
+        // 一个隐式的vue实例
+        let router=new VueRouter({
+            // 路由的映射表
+            routes:[
+                {
+                    path:"/topic/:id",
+                    component:{
+                        template:"<div>111111{{$route.params}}</div>"
+                    }
+                }
+            ]
+        })
+    </script>
+    <style>
+        .router-link-active{
+            color: red;
+            font-weight: 900;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- cnode -->
+        <router-link to="/topic/222">
+            topoic-222
+        </router-link>
+        <!-- $route  在vue里是一个全局的变量
+            代表当前的路由信息 -->
+        <!-- {{$route}} -->
+       <router-view>
+           
+       </router-view>
+    </div>
+    <script>
+        let app=new Vue({
+            el:"#app",
+            data:{
+                
+            },
+            router
+        })
+    </script>
+</body>
+</html>

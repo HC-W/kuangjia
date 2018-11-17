@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>变量</title>
+</head>
+<body>
+    <input type="button" value="1">
+    <input type="button" value="2">
+    <input type="button" value="3">
+    <script>
+        // const
+        // 错误的代码
+        // if(1){
+        //     const w=10;
+        // }
+        // console.log(w);
+
+      // var 
+    //   for循环中使用了优化
+        var Input=document.getElementsByTagName("input");
+        for (var i = 0, len = Input.length;
+            i < len; i++) {
+            (function (i) {
+                // i  0 1 2 ..... x
+                // 闭包!!
+                Input[i].onclick = function () {
+                    console.log(i);
+                }
+            })(i)
+        }
+    // let
+        for (let i = 0, len = Input.length;
+            i < len; i++) {
+            Input[i].onclick = function () {
+                console.log(i);
+            }
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数组汇总reduce</title>
+</head>
+<body>
+    <script>
+        var arr=[11,13,44,23,66,73];
+        // 返回值，数字，return ===> 结果
+        // item 累加值  val,index  一样
+        //  在汇总里面可以处理，最后值的返回
+        var arr2=arr.reduce(
+            (item,val,index,array)=>{
+                console.log(item+"."+val+"."+index);
+                // 第一种
+                // if(index === array.length-1){
+                //     return item/array.length;
+                // }
+                // return item+val;
+                // return array.length;
+                // 第二种
+                if(index<array.length-1){
+                    return item+val;
+                }else{
+                    return (item+val)/array.length;
+                }
+            }
+        )
+        console.log(arr2);
+    </script>
+</body>
+</html>

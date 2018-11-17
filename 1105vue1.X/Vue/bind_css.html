@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>bind_css</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="styleJson.color">
+        <span v-bind:style="styleJson">
+            我是一个标签 ==>span
+        </span>
+    </div>
+    <script>
+        window.onload=()=>{
+            let app=new Vue({
+                el:"#app",
+                data:{
+                    styleJson:{
+                        color:"",
+                        display:"block",
+                        width:"300px",
+                        // key值不能写中划线 -
+                        "font-size":"30px"
+                    }
+                }
+            })
+        }
+    </script>
+</body>
+</html>

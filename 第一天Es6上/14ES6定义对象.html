@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ES6定义对象</title>
+</head>
+<body>
+    <script>
+        // 定义类
+        //  class  定义类的关键词
+        class Dog{
+            // 构造器
+            constructor(name,age,fn){
+                // 属性 和 方法
+                this.name=name;
+                this.age=age;
+                this.fn=function(){
+                    console.log("今天快结束了！");
+                }
+            }
+            fn(){
+                console.log("原型方法的fn");
+            }
+        }
+
+
+        let kj=new Dog("柯基","2");
+        console.log(kj);
+    </script>
+</body>
+</html>

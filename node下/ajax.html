@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ajax</title>
+    <script src="./ajax.js"></script>
+</head>
+<body>
+    <script>
+        // 初始化
+        // let ajax=new XMLHttpRequest();
+        //  发送过去以后接收   五个数   0,1,2,3,4
+        // 连接
+        // 参数三：同步(版本高的浏览器禁止同步) 还是异步
+        // ajax.open('GET','/www?name=ggg');  
+        // 发送
+        // ajax.send();  
+        // 接收
+        // ajax.onreadystatechange=()=>{
+        //     if(ajax.readyState==4){
+        //         if(ajax.status>=200 && ajax.status<300 || ajax.status ==304){
+        //             alert("成功");
+        //         }else{
+        //             alert("失败");
+        //         }
+        //     }
+        // };
+
+        /*
+           0 初始化 ----刚创建这个对象  new()  下面
+           1 已连接    open  下面
+           2 已送达   我们发的东西送过去了
+           3 已接收  header  认为3就可以结束了  也是ok的
+           4 已接收  body
+        */
+    //    http 状态码：200  404  503()
+
+    // 为什么状态码是数字？
+    /*
+    比如说日本的服务器  ，发送了一段日文===>中国客户端，（看不懂，懵逼了）
+        但是呢，全世界数字这个东西是公开且通用的，
+        所以通过数字来表明状态，这样全世界的人都能认识了
+    */
+
+    /* 
+    1xx ：消息 ===>  就是我告诉你有这么个事情  websocket
+    2xx : 成功
+    3xx ：重定向  ===> 小伙伴搬家了，但是你不知道，当你去找他的时候需要问一问他的新家在哪，然后记住这个新地址
+        301 : 永久重定向(这种情况基本不会发生) ===> 就比如你只有一个名字，本来想叫你但使用的是其他的名字肯定是不行的
+        302 : 临时重定向(99%都是这种代码)===>就比如在百度地址栏输入的值当页面跳转时都会改变
+            http://baidu.com===>(跳转为)  http://www.baidu.com
+        304 : 缓存
+                服务器和客户端之间的关系
+    4xx : 客户端报错
+        404 : 没找到
+    5xx : 服务端的错误  (503:服务器过载了 或者服务器不可用)
+    6xx : 扩展(自己可以去添加)
+    */
+
+
+
+ajax({
+    url:"1.php",
+    data:{
+        name:"wang"
+    },
+    success(data){
+        console.log(data);
+    },
+    error(){
+        console.log("失败");
+    }
+})
+    </script>
+</body>
+</html>

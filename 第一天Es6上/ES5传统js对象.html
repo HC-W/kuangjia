@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ES5传统js对象</title>
+</head>
+<body>
+    <script>
+        // 类    是函数
+        function Dog(name,age){
+            // 构造器  很随意
+            this.name=name;
+            this.age=age;
+        }
+
+        // 原型
+        Dog.prototype.showName=()=>{
+            console.log(this.showName);
+        }
+        Dog.prototype.showAge=()=>{
+            console.log(this.showAge);
+        }
+        let kj=new Dog("柯基","1");
+        
+        // 最恐怖的是继承  
+        function Worker(name,age,job){
+            // 而且继承不了原型，还得手动拼接
+            Dog.call(this,name,age);
+            // this.name=name;
+            // this.age=age;
+            this.job=job;
+        }
+        Worker.prototype=new Dog();
+        Worker.prototype.constructor=Worker;
+        Worker.prototype.showObj=function(){
+            console.log(this.job);
+        }
+        let w=new Worker("哈士奇","2","拆家");
+        console.log(w);
+        w.showObj();
+        w.showAge();
+        w.showName();
+    </script>
+</body>
+</html>

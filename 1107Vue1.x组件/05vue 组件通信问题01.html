@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue组件通信问题</title>
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 
+            注意在 JavaScript 中对象和数组是通过引用传入的，
+            所以对于一个数组或对象类型的 prop 来说，
+            在子组件中改变这个对象或数组本身将会影响到父组件的状态。
+         -->
+        <mt-div v-for="item in json" :item="item"></mt-div>
+    </div>
+    <script>
+        Vue.component('MtDiv', {
+            props:['item'],
+            template: ` <div>
+            <span>{{item.id}}</span>
+            <span>{{item.name}}</span>
+            <button @click="fn">+</button>
+            <span>{{item.num}}</span>
+            <button @click="fn">-</button>
+        </div>`,
+            methods:{
+                fn(){
+                    console.log(this);
+                    this.item.num += 1;
+                }
+            }
+        })
+
+        let app = new Vue({
+            el: '#app',
+            data: {
+                json: [
+                    {
+                        id: '1',
+                        name: '苹果🍎',
+                        num: 0
+                    },
+                    {
+                        id: '2',
+                        name: '香蕉🍌',
+                        num: 0
+                    }
+                ]
+            }
+        })
+    </script>
+</body>
+
+</html>

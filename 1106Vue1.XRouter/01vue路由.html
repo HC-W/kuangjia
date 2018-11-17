@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue路由</title>
+    <script src="./vue.js"></script>
+    <script src="./vue-router.js"></script>
+    
+    <script>
+        // 一个隐式的vue实例
+        let router=new VueRouter({
+            // 路由的映射表
+            routes:[
+                {
+                    path:"/user",
+                    component:{
+                        template:"<div>我是{{name}}</div>",
+                        data(){
+                            return {
+                                name:"诺"
+                            }
+                        }
+                    }
+                },
+                {
+                    path:"/topic",
+                    component:{
+                        template:"<div>我是{{name}}</div>",
+                        data(){
+                            return {
+                                name:"一诺"
+                            }
+                        }
+                    }
+                }
+            ]
+        })
+    </script>
+    <style>
+        .router-link-active{
+            color: red;
+            font-weight: 900;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- 路由显示的位置没有限制，为什么？怎么限制？ -->
+        <router-view></router-view>
+        <!-- 触发路由的动作 -->
+        <router-link to="/user">user</router-link>
+        <router-link to="/topic">topic</router-link>
+        <!-- 路由显示的位置 -->
+        <router-view></router-view>
+        {{name}}
+    </div>
+    <script>
+        let app=new Vue({
+            el:"#app",
+            data:{
+                name:"wang"
+            },
+            router
+        })
+    </script>
+</body>
+</html>

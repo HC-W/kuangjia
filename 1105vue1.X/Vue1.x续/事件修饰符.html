@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件修饰符</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <form method="GET" action="http:localhost/api?name=ggg" @submit.prevent="fn" >
+            <input type="text" name="user"><br>
+            <input type="submit" value="提交">
+        </form>
+    </div>
+    <script>
+        let app=new Vue({
+            el:"#app",
+            data:{
+               
+            },
+            methdos:{
+                fn(){
+                    console.log("你看30 ");
+                    return false
+                }
+            }
+        })
+    </script>
+</body>
+</html>
